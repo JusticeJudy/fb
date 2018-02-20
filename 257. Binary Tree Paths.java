@@ -1,6 +1,6 @@
 257. Binary Tree Paths 
 
-Time: O(nlogn)
+Time: O(n)
 
 public List<String> binaryTreePaths(TreeNode root) {
 	List<String> res = new ArrayList<>();

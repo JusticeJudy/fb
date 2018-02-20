@@ -26,6 +26,8 @@ public int strStr(String haystack, String needle) {
 find the first index in haystack that starts with an anagram of needle
 assume only lowercase letters in strings
 
+在a的每个位置截取c=a.substring(i,i+m) ，把c每个字符和次数存进hashmap,然后拿b来对比  时间复杂度是O(m),总时间复杂度是O(mn)
+    
 O(mn) time, O(m) space
 
 public int strStr(String haystack, String needle) {

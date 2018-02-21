@@ -21,7 +21,8 @@ public String minWindow(String s, String t) {
             if ((counts[s.charAt(right)]--) > 0) {
                 total--;   
             }
-          // while total count still zero, shrink the window by the left pointer, as long as total is still zero, there's room to shrink the window
+          // while total count still zero, shrink the window by the left pointer, as long as total is still zero, there's room
+            // to shrink the window
             while (total == 0){
                 if (right - left + 1 < min) {
                     min = right - left + 1;

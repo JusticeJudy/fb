@@ -60,7 +60,6 @@ public int lengthOfLIS(int[] nums) {
 }
 
 
-
 Solution 2: DP with Binary Search
 // The idea is that as you iterate the sequence, you keep track of the minimum value a subsequence of given length might end with, 
 // for all so far possible subsequence lengths. So dp[i] is the minimum value a subsequence of length i+1 might end with. 

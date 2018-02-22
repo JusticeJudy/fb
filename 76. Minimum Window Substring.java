@@ -2,7 +2,7 @@
 // https://leetcode.com/problems/minimum-window-substring/
 S = "ADOBECODEBANC"
 T = "ABC"
-Minimum window is "BANC".
+Minimum window is "BANC"
 
 public String minWindow(String s, String t) {
     if (s == null || t == null || s.length() == 0 || t.length() == 0) {

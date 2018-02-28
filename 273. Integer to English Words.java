@@ -7,8 +7,10 @@ LC273把数字转换成英语。然后还是要  run test cases
 
 Hint:
 Did you see a pattern in dividing the number into chunk of words? For example, 123 and 123000.
-Group the number by thousands (3 digits). You can write a helper function that takes a number less than 1000 and convert just that chunk to words.
-There are many edge cases. What are some good test cases? Does your code work with input such as 0? Or 1000010? (middle chunk is zero and should not be printed out)
+Group the number by thousands (3 digits). You can write a helper function that takes a number 
+    less than 1000 and convert just that chunk to words.
+There are many edge cases. What are some good test cases? Does your code work with input such as 0? 
+    Or 1000010? (middle chunk is zero and should not be printed out)
 
 Test:
 0
@@ -17,7 +19,9 @@ Test:
 
 注意: i++的位置；最后结果要trim().
 
-private final String[] LESS_THAN_20 = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+private final String[] LESS_THAN_20 = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", 
+                                       "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", 
+                                       "Seventeen", "Eighteen", "Nineteen"};
 private final String[] TENS = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
 private final String[] THOUSANDS = {"", "Thousand", "Million", "Billion"};
 public String numberToWords(int num) {

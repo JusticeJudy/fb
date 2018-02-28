@@ -8,11 +8,15 @@ Solution 1: Quick Select
 
 Time: O(n) average, the problem is reduced to approximately half of its original size, giving the recursion T(n) = T(n/2) + O(n) 
 	  O(n^2) worst case, the recursion may become T(n) = T(n - 1) + O(n)
-// In the average sense, the problem is reduced to approximately half of its original size, giving the recursion T(n) = T(n/2) + O(n) 
-// in which O(n) is the time for partition. This recursion, once solved, gives T(n) = O(n) and thus we have a linear time solution.
+// In the average sense, the problem is reduced to approximately half of its original size, 
+// 	giving the recursion T(n) = T(n/2) + O(n) 
+// in which O(n) is the time for partition. This recursion, once solved, gives T(n) = O(n) 
+// 	and thus we have a linear time solution.
 // Note that since we only need to consider one half of the array, the time complexity is O(n). 
-// If we need to consider both the two halves of the array, like quicksort, then the recursion will be T(n) = 2T(n/2) + O(n) and the complexity will be O(nlogn).
-// Of course, O(n) is the average time complexity. In the worst case, the recursion may become T(n) = T(n - 1) + O(n) and the complexity will be O(n^2).
+// If we need to consider both the two halves of the array, like quicksort, then the recursion 
+// 	will be T(n) = 2T(n/2) + O(n) and the complexity will be O(nlogn).
+// Of course, O(n) is the average time complexity. In the worst case, the recursion may become
+// 	T(n) = T(n - 1) + O(n) and the complexity will be O(n^2).
 
 public int findKthLargest(int[] nums, int k) {
 	int left = 0, right = nums.length - 1;

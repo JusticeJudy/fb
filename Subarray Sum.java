@@ -13,6 +13,20 @@ public boolean subArraySum(int[] nums, int k) {
     return false;
 }
 
+// two pointer (all positive num)
+public boolean subArraySum(int[] nums, int k) {
+    int sum = 0, left = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (sum == k) return true;
+            while (left <= i && sum > k) {
+                sum -= nums[left++];   
+                if (sum == k) return true;
+            }
+        }
+        return false;
+}
+
 
 209. Minimum Size Subarray Sum
 

@@ -1,6 +1,26 @@
 Sparce Matrix Multiplication
 
-    
+public class Solution {
+    public int[][] multiply(int[][] a, int[][] b) {
+        if (a == null || b == null) {
+            return new int[0][0];
+        }//for a i*k matrix multiply by a k*j matrix, we will get a i*j matrix
+        int[][] res = new int[a.length][b[0].length];//res[i][j] = a[i][0]*b[0][j] + a[i][1]*b[1][j] +...+ a[i][k]*b[k][j];
+        for (int i = 0; i < a.length; i++) {
+            for (int k = 0; k < a[0].length; k++) {
+                if (a[i][k] != 0) {//cuz it's a sparse matrix, we can only calculate nonzero product to reduce operations
+                    for (int j = 0; j < b[0].length; j++) {
+                        if (b[k][j] != 0) {//we only add up all products that a[i][k] != 0 && b[k][j] != 0 to reduct time
+                            res[i][j] += a[i][k] * b[k][j];// +=, not =; *, not + !!!
+                        }
+                    }
+                }
+            }
+        }
+        return res;
+    }
+}
+
 public int[][] sparseMatrixMultiplication(int[][] A, int[][] B) {
     if (A.length == 0 || A[0].length == 0 || B.length == 0 || B[0].length == 0) 
         return new int[][]{};
@@ -156,6 +176,7 @@ Binary search如果找到了一个元素index，那就用这次的index作为下
 比如[1, 89，100]，去找90；如果不存在，那么binary search的ending index应该是89，所以下次就从那个index开始。
 如果找不到，会返回要插入的位置index + 1，index是要插入的位置，我写的就是返回要插入的index的。
 但是不管返回89还是100的index都无所谓，反正只差一个，对performance没有明显影响的。
+
 
 
 public class Solution {

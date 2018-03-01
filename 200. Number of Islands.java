@@ -132,21 +132,27 @@ class UnionFind{
 ******变种1******
 求largest size of islands
 // dfs solution
-public int numIslands(char[][] grid) {
-    if (grid == null || grid.length == 0 || grid[0] == null || grid[0].length == 0)    return 0;
-    int m = grid.length, n = grid[0].length, max = 0;
-    boolean[][] visited = new boolean[m][n];//O(1) space: directly modify the '1' to '2' to mark grid[i][j] visited
-    for (int i = 0; i < m; i++) 
-        for (int j = 0; j < n; j++) 
-            if (grid[i][j] == '1' && !visited[i][j]) 
-                max = Math.max(max, dfs(grid, visited, m, n, i, j));
-    return max;
+public int maxAreaOfIsland(int[][] grid) {
+    if (grid == null || grid.length == 0) {
+        return 0;   
+    }
+    int max = Integer.MIN_VALUE;
+    for (int i = 0; i < grid.length; i++) {
+        for (int j = 0; j < grid[0].length; j++) {
+            if (grid[i][j] != 0) {
+                max = Math.max(max, dfs(grid, i, j));   
+            }
+        }
+    }
+    return max == Integer.MIN_VALUE? 0:max;        
 }
-private int dfs(char[][] grid, boolean[][] visited, int m, int n, int i, int j) {
-    if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] != '1' || visited[i][j])    return 0; // important!
-    visited[i][j] = true;
-    return 1 + dfs(grid, visited, m, n, i + 1, j) + dfs(grid, visited, m, n, i - 1, j) 
-            + dfs(grid, visited, m, n, i, j + 1) + dfs(grid, visited, m, n, i, j - 1);
+
+private int dfs(int[][] grid, int i, int j) {
+    if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == 0) {
+        return 0;   
+    }
+    grid[i][j] = 0;
+    return 1 + dfs(grid, i + 1, j) + dfs(grid, i - 1, j) + dfs(grid, i, j + 1) + dfs(grid, i, j - 1);
 }
 
 // bfs solution

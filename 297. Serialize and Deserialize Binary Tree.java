@@ -17,11 +17,14 @@ public void buildString(TreeNode root, StringBuilder sb) {
 // Decodes your encoded data to tree.
 public TreeNode deserialize(String data) {
     Queue<String> q = new LinkedList<>();
-    q.addAll(Arrays.asList(data.split(" ")));
+    // q.addAll(Arrays.asList(data.split(" ")));
+    for (String node : data.split(" ")) {
+        q.offer(node);
+    }
     return buildTree(q);
 }
 public TreeNode buildTree(Queue<String> q) {
-    String s = q.remove();
+    String s = q.poll();
     if (s.equals("#"))   return null;
     TreeNode root = new TreeNode(Integer.valueOf(s));
     root.left = buildTree(q);

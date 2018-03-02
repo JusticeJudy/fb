@@ -1,6 +1,6 @@
 K Sum
 
-two sum with duplicate number返回所有的可能的index pairs，我用的是map<Integer, Set<Integer>>
+// two sum with duplicate number返回所有的可能的index pairs，我用的是map<Integer, Set<Integer>>
 
 public List<int[]> findNumbersThatSumToTarget(int[] arr, int target) {
     Map<Integer, Set<Integer>> map = new HashMap<>();
@@ -16,15 +16,26 @@ public List<int[]> findNumbersThatSumToTarget(int[] arr, int target) {
     }
     return res;
 }
-
+// Two sum (any pair)
+public int[] twoSum(int[] nums, int target) {
+	if (nums == null || nums.length == 0) {
+		return new int[] {};
+	}
+	Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+	for (int i = 0; i < nums.length; i++) {
+		if (map.containsKey(target 0 nums[i]) {
+			return new int[] {map.get(target - nums[i]), i};
+		}
+		map.put(nums[i], i);
+	}
+	return new int[] {};
+}
 
 15. 3sum
 此题Follow K sum 可以用递归做，见最后
 
 具体代码就是三个for循环，但是index 都是从0开始，所以会有重复 同 个数的问题。然后问我怎么fix这个bug, 就是把每个循环的起始index变成i+1，i是上 层循环的当前 index。
 接下来就问我时间复杂度，有没有 优解。
-
-
 
 
 // https://leetcode.com/problems/3sum/

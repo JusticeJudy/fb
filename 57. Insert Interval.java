@@ -13,8 +13,11 @@
 public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
     List<Interval> res = new ArrayList<>();
     int i = 0;
+    // loop through intervals, add in intervals that have end time before the new interval (means it doesn't conflict)
     while (i < intervals.size() && intervals.get(i).end < newInterval.start)
         res.add(intervals.get(i++));
+    // when we run into intervals that have end time later than new interval startime, and the interval star time earlier than
+        // new interval's end time. We merge them by modifying the new interval's start and end time
     while (i < intervals.size() && intervals.get(i).start <= newInterval.end) {
         newInterval.start = Math.min(intervals.get(i).start, newInterval.start);
         newInterval.end = Math.max(intervals.get(i).end, newInterval.end);

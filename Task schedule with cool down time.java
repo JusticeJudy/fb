@@ -89,19 +89,23 @@ private static int taskSchedule3(int[] tasks, int cooldown) {
    private static String taskSchedule4(String str, int k) {
        StringBuilder rearranged = new StringBuilder();
        Map<Character, Integer> map = new HashMap<>();
+   // compute frequency of all unique tasks
        for (char c : str.toCharArray()) {
            if (!map.containsKey(c)) {
                map.put(c, 0);
            }
            map.put(c, map.get(c) + 1);
        }
-
+  // use pq to prioritize tasks based on their frequency. Most frequent ones on top.
        Queue<Map.Entry<Character, Integer>> maxHeap = new PriorityQueue<>(new Comparator<Map.Entry<Character, Integer>>() {
            public int compare(Map.Entry<Character, Integer> entry1, Map.Entry<Character, Integer> entry2) {
                return entry2.getValue() - entry1.getValue();
            }
        });
        maxHeap.addAll(map.entrySet());//O(nlogn) time, O(n) space
+       
+  // temp list to store scheduled tasks, decrement their frequency as we schedule. 
+  //   If task still have frequencies, add it back to pq to prioritize it.
        ArrayList<Map.Entry<Character, Integer>> temp = new ArrayList<>();//O(k) space
 
        while (!maxHeap.isEmpty()) {//O(max frequency) time
@@ -110,7 +114,7 @@ private static int taskSchedule3(int[] tasks, int cooldown) {
            while (i <= k && !maxHeap.isEmpty()) {//O(k) time
                Map.Entry<Character, Integer> curr = maxHeap.poll();
                rearranged.append(curr.getKey());
-               curr.setValue(curr.getValue() - 1);
+               curr.setValue(curr.getValue() - 1);   // decrement frequency after scheduling it.
                temp.add(curr);
                i++;
            }
@@ -121,8 +125,8 @@ private static int taskSchedule3(int[] tasks, int cooldown) {
                i++;//remember to add i++ !!!
            }
 
-           for (Map.Entry<Character, Integer> e : temp) {//O(klogk) time
-               if (e.getValue() > 0) {
+           for (Map.Entry<Character, Integer> e : temp) {//O(klogk) time     // add the task back to pq if there's 
+               if (e.getValue() > 0) {                                        // till frequency left in the task
                    maxHeap.offer(e);
                }
            }

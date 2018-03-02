@@ -19,23 +19,26 @@ public List<Interval> merge(List<Interval> intervals) {
     if (intervals.size() <= 1)  return intervals;
     List<Interval> res = new ArrayList<>();
     // important
-    Collections.sort(intervals, new Comparator<Interval>(){
-        public int compare(Interval i1, Interval i2) {
-            return i1.start - i2.start;
-        }
-    });
-    int start = intervals.get(0).start, end = intervals.get(0).end;
-    for (Interval i : intervals) {
-        if (i.start <= end)
-            end = Math.max(end,i.end);
-        else {
-            res.add(new Interval(start, end));
-            start = i.start;
-            end = i.end;
+//     Collections.sort(intervals, new Comparator<Interval>(){
+//         public int compare(Interval i1, Interval i2) {
+//             return i1.start - i2.start;
+//         }
+//     });
+    // better way
+    intervals.sort((i1, i2) -> Integer.compare(i1.start, i2.start));
+    int currStart = intervals.get(0).start;
+    int currEnd = intervals.get(0).end;
+    for (Interval interval : intervals) {
+        if (interval.start <= currEnd) {
+            currEnd = Math.max(interval.end, currEnd);   
+        } else {
+            result.add(new Interval(currStart, currEnd));
+            currStart = interval.start;
+            currEnd = interval.end;
         }
     }
-    res.add(new Interval(start, end));
-    return res;
+    result.add(new Interval(currStart, currEnd));
+    return result;
 }
 /**
  * Definition for an interval.

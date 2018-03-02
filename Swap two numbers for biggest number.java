@@ -21,7 +21,16 @@ class Solution {
     
     
     public  static int[] np(int[] nums) {
-        
+        // if input is an Integer
+     /*
+        String numS = String.valueOf(num);
+        char[] c = numS.toCharArray();
+        int[] nums = new int[c.length];
+        for (int i = 0; i < c.length; i++) {
+            nums[i] = Character.getNumericValue(c[i]);
+        }
+     */
+        int[][] dp = new int[nums.length][2];
         dp(0, nums, dp);
         for (int i = 0; i < dp.length; i++) {
 // first number that has a biggest number to its right, swap it with that number. (index is already recorded, 
@@ -32,6 +41,13 @@ class Solution {
             }
         }
         return nums;
+     
+       /*  if input is an Integer
+          StringBuilder sb = new StringBuilder();
+           for (int n : nums) sb.append(n);
+           String s = sb.toString();
+           return Integer.valueOf(s);
+        */
     }
     
     private static void dp(int i, int[] nums,int[][] dp) {

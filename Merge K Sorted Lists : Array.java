@@ -107,3 +107,40 @@ private ListNode mergeKLists(ListNode[] lists, int start, int end) {
 
 记住 list.subList(int fromIndex, int toIndex) 方法
 
+// Merge k sorted lists (Iterator)
+
+private Queue<ListNode> queue;
+private ListNode root;
+private ListNode head;
+public ListNode mergeKLists(ListNode[] lists) {
+    if (lists == null || lists.length == 0) {
+        return null;   
+    }
+    int k = lists.length;
+    queue = new PriorityQueue<ListNode>(k, (a, b) -> a.val - b.val);
+    for (ListNode list : lists) {
+        if (list != null) {
+            queue.offer(list);   
+        }
+    }
+    root = new ListNode(0);
+    head = root;
+}
+
+public boolean hasNext() {
+    return !queue.isEmpty();   
+}
+
+public ListNode next() {
+    ListNode curr = queue.poll();
+    if (curr.next != null) {
+        queue.offer(curr.next);   
+    }
+    head.next = curr;
+    head = nead.next;
+    return curr;
+}
+
+public ListNode getHead() {
+    return root.next;   
+}

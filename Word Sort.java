@@ -30,6 +30,10 @@ public String[] wordSort(char[] alphabet, String[] words) {
         char []Into = new char[1000];
         char []Outto = new char[1000];
         for(int i = 0; i < alphabet.length; i++) {
+            // translate the custom alphabet into a lookup table
+        //0,1,2,3,4,5,6,7,8,9,10,
+      // {z,b,a,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,c} ->
+      // {c,b,a,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,a}
             Into[(int)alphabet[i]] = (char)('a' + i);
             Outto['a' + i] = alphabet[i];
         }

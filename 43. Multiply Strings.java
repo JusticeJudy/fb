@@ -19,6 +19,7 @@ public String multiply(String num1, String num2) {
             posNum[p1] += sum / 10; // important
             posNum[p2] = sum % 10; // important
         }
+    }
     StringBuilder sb = new StringBuilder();
     for (int num : posNum)
         if (!(sb.length() == 0 && num == 0))    sb.append(num);

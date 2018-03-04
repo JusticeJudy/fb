@@ -81,6 +81,8 @@ private void dfs(List<String> res, String tmp, String nums, int target, int star
     // dfs call on all numbers starting at position 'start'
     for (int i = start; i < nums.length(); i++) {
         if (nums.charAt(start) == '0' && i != start)    break; // '0' cannot be leading number, so stop further dfs
+        // loop over the number starting after the 'start' position, to either include in the curr number, or 
+         // put them in the next dfs call
         long cur = Long.valueOf(nums.substring(start, i + 1));
         if (start == 0)
             dfs(res, tmp + cur, nums, target, i + 1, eval + cur);

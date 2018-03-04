@@ -6,6 +6,8 @@ public boolean wordBreak(String s, Set<String> wordDict) {
     dp[0] = true;
     for (int i = 1; i < dp.length; i++)
         for (int j = 0; j < i; j++) 
+        // keep a boolean array, for every character, loop from beginning of the dp[], see if there's spot
+        //  where it's a word, and from that spot to the current character exist as a word in the dictionary
             if (dp[j] && wordDict.contains(s.substring(j, i))) {
                 dp[i] = true;
                 break;

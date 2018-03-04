@@ -14,6 +14,10 @@ Solution 1: iteration (4ms)
   // So we only need to consider root's right child, thus we move root to its right and check again.
 // We continuously move root until exhausted. To this point, we only need to return the res in case 1.'
 
+// 再来看一种更简单的方法，这种方法充分地利用到了BST的性质，我们首先看根节点值和p节点值的大小，如果根节点值大，
+  // 说明p节点肯定在左子树中，那么此时我们先将res赋为root，然后root移到其左子节点，循环的条件是root存在，
+  // 我们再比较此时root值和p节点值的大小，如果还是root值大，我们重复上面的操作，如果p节点值，那么我们将root移到其右子节点，
+  // 这样当root为空时，res指向的就是p的后继节点
 public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
     TreeNode res = null;
     while (root != null) {

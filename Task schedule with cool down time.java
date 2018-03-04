@@ -85,6 +85,8 @@ private static int taskSchedule3(int[] tasks, int cooldown) {
     *    the task which does not have max count first fills the empty slots and then just insert any valid place
     * */
 
+// If we don't need to consider orders, we should proritize all tasks based on their frenquency. Schedule
+ // most frequent tasks first. So we might use priority queue
    //output a sequence of tasks that takes least time:O(maxFrequency*klogk) time,O(n) space,n is number of unique tasks
    private static String taskSchedule4(String str, int k) {
        StringBuilder rearranged = new StringBuilder();

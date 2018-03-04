@@ -13,7 +13,10 @@ public int minMeetingRooms(Interval[] intervals) {
 	}
 	Arrays.sort(start);
 	Arrays.sort(end);
+	// keep a pointer to meetings that are sorted based on end time
 	int endIdx = 0, res = 0;
+	// loop through meetings sorted on start time, if start time is earlier that the end time currently pointed
+	  // by the endIdx, then we need more room
 	for (int i = 0; i < start.length; i++) {
 		if (start[i] < end[endIdx])		res++;
 		else	endIdx++;

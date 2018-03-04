@@ -48,13 +48,18 @@ public int minSubArrayLen(int s, int[] nums) {
 325. Maximum Size Subarray Sum Equals k
 
 public int maxSubArrayLen(int[] nums, int k) {
+    // we sum up the elements as we loop through
     int sum = 0, max = 0;
+    // keep track of the earliest position that sum appears
     Map<Integer, Integer> map = new HashMap<>();
     for (int i = 0; i < nums.length; i++) {
         sum += nums[i];
+        // if the sum equals to k, then this is the max size so far, because it starts from idx 0
         if (sum == k)   max = i + 1;
+        // if it contains (sum-k) in map, we compare the length
         else if (map.containsKey(sum - k))
             max = Math.max(max, i - map.get(sum - k));
+        // if the map doesn't contain that sum as key, means it's first time it appears, we record it.
         if (!map.containsKey(sum))  map.put(sum, i);
     }
     return max;

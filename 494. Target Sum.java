@@ -4,13 +4,16 @@
 Solution 1: subset sum + DP
 Time: O(nk)
 
-The original problem statement is equivalent to: Find a subset of nums that need to be positive and the rest of them negative such that the sum is equal to target. Let P be the positive subset and N be the negative subset
+The original problem statement is equivalent to: Find a subset of nums that need to be positive and 
+  the rest of them negative such that the sum is equal to target. 
+  Let P be the positive subset and N be the negative subset
                   sum(P) - sum(N) = target
 sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
                        2 * sum(P) = target + sum(nums)
 So the original problem has been converted to a subset sum problem as follows:
 Find a subset P of nums such that sum(P) = (target + sum(nums)) / 2.
-Note that the above formula has proved that target + sum(nums) must be even, We can use that fact to quickly identify inputs that do not have a solution <!-- subset sum: https://leetcode.com/problems/partition-equal-subset-sum/ -->
+Note that the above formula has proved that target + sum(nums) must be even, 
+We can use that fact to quickly identify inputs that do not have a solution <!-- subset sum: https://leetcode.com/problems/partition-equal-subset-sum/ -->
 
 public int findTargetSumWays(int[] nums, int s) {
     int sum = 0;

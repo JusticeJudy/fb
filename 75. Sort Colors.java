@@ -34,6 +34,12 @@ public void sortColors(int[] nums) {
 sort k colors
 // naive:counting sort(O(n) time, need O(k) space, but can be stable if use same idea above)
 // below:each time sort min&max, then sort middle part's min&max, until we sort all min&max, O(n) time, O(1) space
+/*
+        Each time sort the array into three parts:
+     *  [all min] [all unsorted others] [all max],
+     *  then update min and max and sort the [all unsorted others]
+     *  with the same method.
+*/
 public void sortColors2(int[] colors, int k) {
     //if (colors == null || colors.length <= 1 || k == 1)     return;
     int left = 0, right = colors.length - 1;
@@ -51,7 +57,42 @@ public void sortColors2(int[] colors, int k) {
     }
 }
 
-
+public void sortColors2(int[] colors, int k) {
+        partition(colors, 0, colors.length - 1, 0, k);
+        return;
+}
+    
+private void partition(int[] colors, int start, int end, int startM, int endM) {
+        int left = start;
+        int right = end;
+        if ((endM - startM) == 1) {
+            return;
+        }
+        int m = (startM + endM)/2;
+        
+        while (start < end) {
+            if (colors[start] <= m) {
+                start++;
+            } else {
+                swap(colors, start, end);
+                end--;
+            }
+        }
+        if (colors[end] > m) {
+            end--;
+            start--;
+        }
+        partition (colors, left, start, startM, m);
+        partition(colors, end+1, right, m, endM);
+        return;
+}
+    
+private void swap(int[] colors, int i, int j) {
+        int temp = colors[i];
+        colors[i] = colors[j];
+        colors[j] = temp;
+        return;
+}
 *************变种*************
 给定一个API getCategory(int n)， return {L| M| H} 三种category
 第一问 --- 给定一个Array， [4,2,5,7,8,9], 对于每一个int，有一个category，sort them by category

@@ -15,6 +15,36 @@ private void dfs(List<String> res, TreeNode root, String tmp) {
 	dfs(res, root.right, tmp + root.val + "->");
 }
 
+// String Builder
+public List<String> binaryTreePaths(TreeNode root) {
+	List<String> result = new ArrayList<String>();
+
+	if (root == null) {
+	    return result;
+	}
+	StringBuilder sb = new StringBuilder();
+
+	traverse(root, sb, result);
+	return result;
+}
+    
+private void traverse(TreeNode node, StringBuilder sb, List<String> result) {
+        if (node.left == null && node.right == null) {
+            sb.append(node.val);
+            result.add(sb.toString());
+            return;
+        }
+        
+        sb.append(node.val).append("->");
+        if (node.left != null) {
+            traverse(node.left, new StringBuilder(sb), result);
+        }
+        if (node.right != null) {
+            traverse(node.right, new StringBuilder(sb), result);
+        }
+        return;
+}
+
 考虑print path
 1 如果所有的node在一条线上，时间复杂度。O(n^2)
 2 full binary tree 时间复杂度。O(nlogn)

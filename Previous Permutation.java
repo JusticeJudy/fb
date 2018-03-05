@@ -5,7 +5,8 @@ Previous Permutation
  	// a tad smaller. 
 2764135 （找最后一个逆序41）
 // The above example, we loop from the end of array. Find the dip of the trend, right when the digits start to pick up.
- // which is 4 in this case, and we want to swap this with a digit that is most closely smaller than 4, which is 3.
+ // which is 4 in this case, and we want to swap this with a digit that is smaller than 4 and closest to 1's position, 
+  // which is 3.
  // after we swop it, we reverse the order of the array from the original 4's position.
 2764135 （找4后面比4小的最后一个数3）
 2763145 （交换3,4的位置）
@@ -55,7 +56,8 @@ private void reverse(int[] nums, int left, int right) {
   // larger.
 2763541 （找最后一个正序35）
 // The above example, we loop from the end of array. Find the peak of the trend, right when the digits start to climb down.
- // which is 3 in this case, and we want to swap this with a digit that is most closely bigger than 3, which is 4.
+ // which is 3 in this case, and we want to swap this with a digit that is bigger than 3 and closest to 1's position, 
+  // which is 4.
  // after we swop it, we reverse the order of the array from the original 3's position.
 2763541 （找3后面比3大的最后一个数4）
 2764531 （交换3,4的位置）

@@ -16,6 +16,20 @@ public List<Integer> preorderTraversal(TreeNode root) {
   return result;
 }
 
+public List<Integer> preorderTraversal(TreeNode root) {
+    Stack<TreeNode> st = new Stack<TreeNode>();
+    List<Integer> result = new ArrayList<Integer>();
+    if (root == null) return result;
+    TreeNode curr = root;
+    st.push(curr);
+    while (!st.isEmpty()) {
+         curr = st.pop();
+        result.add(curr.val);
+        if (curr.right != null) st.push(curr.right);
+        if (curr.left != null) st.push(curr.left);
+    }
+    return result;   
+}
 
 public List<Integer> inorderTraversal(TreeNode root) {
   List<Integer> result = new ArrayList<Integer>();

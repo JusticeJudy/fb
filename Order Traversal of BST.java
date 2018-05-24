@@ -9,8 +9,8 @@ public List<Integer> preorderTraversal(TreeNode root) {
       result.add(curr.val);
       curr = curr.left;
     } else {
-      TreeNode tmp = s.pop();
-      curr = tmp.right;
+      curr = s.pop();
+      curr = curr.right;
     }
   }
   return result;

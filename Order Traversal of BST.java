@@ -60,8 +60,8 @@ public List<Integer> postorderTraversal(TreeNode root) {
       result.add(0, curr.val);
       curr = curr.right;
     } else {
-      TreeNode tmp = s.pop();
-      curr = tmp.left;
+      curr = s.pop();
+      curr = curr.left;
     }
   }
   return result;

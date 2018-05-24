@@ -32,22 +32,22 @@ public List<Integer> preorderTraversal(TreeNode root) {
 }
 
 public List<Integer> inorderTraversal(TreeNode root) {
-  List<Integer> result = new ArrayList<Integer>();
-  Stack<TreeNode> s = new Stack<TreeNode>();
-  TreeNode curr = root;
-  
-  while (!s.isEmpty() || curr != null) {
-    if (curr != null) {
-      s.push(curr);
-      curr = curr.left;
-    } else {
-      TreeNode tmp = s.pop();
-      result.add(curr.val);
-      curr = tmp.right;
+        List<Integer> result = new ArrayList<Integer>();
+        if (root == null) return result;
+        Stack<TreeNode> st = new Stack<TreeNode>();
+        TreeNode curr = root;
+        while (!st.isEmpty() || curr != null) {
+            if (curr != null) {
+                st.push(curr);
+                curr = curr.left;
+            } else {
+                curr = st.pop();
+                result.add(curr.val);
+                curr = curr.right;
+            }
+        }
+        return result;
     }
-  }
-  return result;
-}
 
 public List<Integer> postorderTraversal(TreeNode root) {
   List<Integer> result = new ArrayList<Integer>();
